@@ -5,9 +5,12 @@
     <color rgba="1 1 1 1"/>
 </material>
 
-<xacro:macro name="segment" params="suffix base_link">
+<link name="base_link"/>
 
-    <link name="segment_${suffix}">
+
+<xacro:macro name="segment" params="suffix baselink">
+
+    <link name="segment_$(suffix)">
         <visual>
             <geometry>
                 <cylinder length="0.1" radius="0.3"/>
@@ -17,9 +20,9 @@
         </visual>
     </link>
 
-    <joint name="segment_${suffix}_joint" type="fixed">
-        <parent link="${base_link}"/>
-        <child link="segment_${suffix}"/>
+    <joint name="segment_$(suffix)_joint" type="fixed">
+        <parent link="$(baselink)"/>
+        <child link="segment_$(suffix)"/>
     </joint>
 
 </xacro:macro>

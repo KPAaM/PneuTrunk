@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<robot name="pneutrunk">
+
+<material name="white">
+    <color rgba="1 1 1 1"/>
+</material>
+
+<link name="base_link"/>
+
+<link name="segment_1">
+    <visual>
+        <geometry>
+            <cylinder length="0.1" radius="0.3"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </geometry>
+        <material name="white"/>
+    </visual>
+</link>
+
+<joint name="segment_1_joint" type="floating">
+    <parent link="base_link"/>
+    <child link="segment_1"/>
+</joint>
+
+<link name="segment_2">
+    <visual>
+        <geometry>
+            <cylinder length="0.1" radius="0.3"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </geometry>
+        <material name="white"/>
+    </visual>
+</link>
+
+<joint name="segment_2_joint" type="floating">
+    <parent link="base_link"/>
+    <child link="segment_2"/>
+</joint>
+
+
+<link name="segment_3">
+    <visual>
+        <geometry>
+            <cylinder length="0.1" radius="0.3"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </geometry>
+        <material name="white"/>
+    </visual>
+</link>
+
+<joint name="segment_3_joint" type="floating">
+    <parent link="base_link"/>
+    <child link="segment_3"/>
+</joint>
+
+</robot>
