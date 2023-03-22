@@ -12,7 +12,7 @@ endif()
 
 # Install launch files.
 install(DIRECTORY
-  launch urdf meshes rviz
+  launch urdf meshes config
   DESTINATION share/${PROJECT_NAME}/
 )
 

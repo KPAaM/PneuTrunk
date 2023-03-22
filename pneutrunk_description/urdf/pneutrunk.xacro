@@ -4,20 +4,15 @@
 <!-- TODO: Create base link -->
 <xacro:include filename="$(find pneutrunk_description)/urdf/pneutrunk_table_macro.xacro"/>
 <xacro:pneutrunk_table />
+
 <!-- Add robot -->
-<!-- <xacro:include filename="$(find pneutrunk_description)/urdf/segment_macro.xacro"/>
-<xacro:segment suffix="1" baselink="base_link"/> -->
-<!-- <xacro:segment suffix="2" baselink="base_link"/>
-<xacro:segment suffix="3" baselink="base_link"/>
-<xacro:segment suffix="4" baselink="base_link"/>
-<xacro:segment suffix="5" baselink="base_link"/>
-<xacro:segment suffix="6" baselink="base_link"/>
-
-<joint name="segment_1_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="segment_1"/>
-</joint> -->
-
+ <xacro:include filename="$(find pneutrunk_description)/urdf/segment_macro.xacro"/>
+<xacro:segment id="1" baselink="tool_link"/>
+<xacro:segment id="2" baselink="tool_link"/>
+<xacro:segment id="3" baselink="tool_link"/>
+<xacro:segment id="4" baselink="tool_link"/>
+<xacro:segment id="5" baselink="tool_link"/>
+<xacro:segment id="6" baselink="tool_link"/>
 
 
 </robot>

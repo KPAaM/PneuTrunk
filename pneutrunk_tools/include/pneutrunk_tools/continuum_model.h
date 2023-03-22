@@ -39,4 +39,5 @@ class ContinuumModel : public rclcpp::Node
         visualization_msgs::msg::MarkerArray* _cable_markers_ptr;
         rclcpp::Clock _global_time;    
         pneutrunk_msgs::msg::PneutrunkJointState _joint_state;
+        const std::string parent_frame = "tool_link";
 };

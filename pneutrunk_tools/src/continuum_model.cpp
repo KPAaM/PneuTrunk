@@ -29,7 +29,7 @@ void ContinuumModel::InitCableMarkers()
     _cable_markers_ptr[0].markers.resize(_RESOLUTION);
     for (uint i=0; i<_RESOLUTION; ++i)
     {
-        _cable_markers_ptr[0].markers[i].header.frame_id = "base_link";
+        _cable_markers_ptr[0].markers[i].header.frame_id = parent_frame.c_str();
         _cable_markers_ptr[0].markers[i].header.stamp = _global_time.now();
         _cable_markers_ptr[0].markers[i].ns = "basic_shapes";
 	    _cable_markers_ptr[0].markers[i].id = i;
@@ -62,7 +62,7 @@ void ContinuumModel::Update()
         //
         geometry_msgs::msg::TransformStamped t;
         t.header.stamp = this->get_clock()->now();
-        t.header.frame_id = "base_link";
+        t.header.frame_id = parent_frame.c_str();
         t.child_frame_id = segment_label.c_str();
 
         t.transform.translation.x = 0.5;
