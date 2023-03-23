@@ -16,7 +16,7 @@ class Configuration
         Eigen::Matrix4d DH_matrix(const double &a, const double &d, 
                                 const double &alpha, const double &theta);
 
-        void ForwardKinematics(const Eigen::VectorXd &q);    
+        void ForwardKinematics(const Eigen::VectorXd &q);
 
         Eigen::Matrix4d T1, T2, T3, T4, T5, T6, T7, EEF;
     private:

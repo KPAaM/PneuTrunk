@@ -1,0 +1,8 @@
+<library path="pneutrunk_rviz_plugin">
+  <class 
+      name="pneutrunk_rviz_plugin/PneutrunkPlugin"
+      type="pneutrunk_rviz_plugin::PneutrunkPlugin" 
+      base_class_type="rviz_common::Panel">
+    <description>A panel widget allowing pneutrunk control.</description>
+  </class>
+</library>
