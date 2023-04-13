@@ -13,6 +13,7 @@
 #include "tf2_ros/transform_broadcaster.h"
 #include "tf2/LinearMath/Quaternion.h"
 #include "geometry_msgs/msg/transform_stamped.hpp"
+#include "tf2/LinearMath/Matrix3x3.h"
 
 using namespace std::chrono_literals;
 using std::placeholders::_1;
@@ -24,6 +25,9 @@ class ContinuumModel : public rclcpp::Node
     public:
         ContinuumModel(/* args */);
         ~ContinuumModel();
+
+        Configuration robot;
+
     private:
         void Update();
         void InitCableMarkers();
@@ -34,7 +38,7 @@ class ContinuumModel : public rclcpp::Node
         rclcpp::Subscription<pneutrunk_msgs::msg::PneutrunkJointState>::SharedPtr _state_subscriber;
         std::unique_ptr<tf2_ros::TransformBroadcaster> _tf_broadcaster;
 
-        const uint _NUMBER_OF_SEGMENTS = 3;
+        const uint _NUMBER_OF_SEGMENTS = 7;
         const uint _RESOLUTION = 200; // number of markers between segments
         visualization_msgs::msg::MarkerArray* _cable_markers_ptr;
         rclcpp::Clock _global_time;    

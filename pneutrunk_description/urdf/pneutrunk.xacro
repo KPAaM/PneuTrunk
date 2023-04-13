@@ -13,6 +13,7 @@
 <xacro:segment id="4" baselink="tool_link"/>
 <xacro:segment id="5" baselink="tool_link"/>
 <xacro:segment id="6" baselink="tool_link"/>
+<xacro:segment id="7" baselink="tool_link"/>
 
 
 </robot>

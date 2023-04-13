@@ -52,34 +52,45 @@ void ContinuumModel::StateCallback(const pneutrunk_msgs::msg::PneutrunkJointStat
 
 void ContinuumModel::Update()
 {
-    // Update disk
+    // Prepare data
+    Eigen::VectorXd q(13);
+    q << 15.0, 2.0,
+        15.0, 2.0,
+        15.0, 2.0,
+        15.0, 2.0,
+        15.0, 2.0,
+        15.0, 2.0,
+        0.0;
+    robot.ForwardKinematics(q);
+
+    // Update rotation disk 1-6
     for (uint i=0; i<_NUMBER_OF_SEGMENTS; ++i)
     {
         // label link
         std::string segment_label = "segment_";
         segment_label += std::to_string(i+1);
 
-        //
+        // fill transform msg
         geometry_msgs::msg::TransformStamped t;
         t.header.stamp = this->get_clock()->now();
         t.header.frame_id = parent_frame.c_str();
         t.child_frame_id = segment_label.c_str();
 
-        t.transform.translation.x = 0.5;
-        t.transform.translation.y = 0;
-        t.transform.translation.z = i*0.5;
+        t.transform.translation.x = (robot.Seg_T[i](0,3)/1000.0);
+        t.transform.translation.y = (robot.Seg_T[i](1,3)/1000.0);
+        t.transform.translation.z = (robot.Seg_T[i](2,3)/1000.0);
 
-        tf2::Quaternion q;
-        q.setRPY(0, 0, 0);
-        // q.setRPY(_joint_state.segment_state[i].roll, _joint_state.segment_state[i].phi, 0);
-        t.transform.rotation.x = q.x();
-        t.transform.rotation.y = q.y();
-        t.transform.rotation.z = q.z();
-        t.transform.rotation.w = q.w();
+
+        Eigen::Quaterniond quat(robot.Seg_T[i].topLeftCorner<3,3>());
+        t.transform.rotation.x = quat.x();
+        t.transform.rotation.y = quat.y();
+        t.transform.rotation.z = quat.z();
+        t.transform.rotation.w = quat.w();
 
         // Send the transformation
         _tf_broadcaster->sendTransform(t);
     }
+
 
     // Publish cables 
     // TODO: compute position

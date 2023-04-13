@@ -13,13 +13,14 @@ class Configuration
 {
     public:
         Configuration(/* args */);
-        Eigen::Matrix4d DH_matrix(const double &a, const double &d, 
-                                const double &alpha, const double &theta);
+        Eigen::Matrix4d SegmentTransform(const double &roll, const double &pitch);
 
         void ForwardKinematics(const Eigen::VectorXd &q);
 
-        Eigen::Matrix4d T1, T2, T3, T4, T5, T6, T7, EEF;
+        std::vector<Eigen::Matrix4d> T;
+        std::vector<Eigen::Matrix4d> Seg_T;
     private:
+        double _r = 62.0;
 
 };
 
