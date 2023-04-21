@@ -25,6 +25,7 @@ find_package(geometry_msgs REQUIRED)
 
 
 
+
 include_directories(include)
 
 add_executable(testovaci src/main.cpp src/continuum_model.cpp src/continuum_kinematics.cpp)

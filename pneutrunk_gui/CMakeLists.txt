@@ -17,6 +17,12 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rviz2)  
 find_package(rviz_common)  
+find_package(rviz_default_plugins REQUIRED)
+find_package(rviz_rendering REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(pneutrunk_msgs REQUIRED)
+
 
 find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets)
 # uncomment the following section in order to fill in
@@ -62,12 +68,23 @@ endif()
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${FORMS} ${HEADERS_MOC} ${FORMS_HEADERS} ${RESOURCES})
 ament_target_dependencies(${PROJECT_NAME}
-  rclcpp
-  rviz_common
+  "Qt5Core"
+  "Qt5Widgets"
+  "rclcpp"
+  "rviz_common"
+  "rviz_default_plugins"
+  "rviz_rendering"
+  pneutrunk_msgs
 )
 
 target_link_libraries(${PROJECT_NAME} ${QT_LIBRARIES} )
 
+ament_export_dependencies(
+  rclcpp
+  rviz_common
+  rviz_default_plugins
+  rviz_rendering
+  pneutrunk_msgs)
 
 install(TARGETS
   ${PROJECT_NAME}

@@ -12,8 +12,20 @@
   <depend>rclcpp_lifecycle</depend>
   <depend>rviz2</depend>
   <depend>rviz_common</depend>
+  <depend>rviz_default_plugins</depend>
+  <depend>rviz_rendering</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>pneutrunk_msgs</depend>
+
+  
+
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
+
+  <exec_depend>libqt5-core</exec_depend>
+  <exec_depend>libqt5-gui</exec_depend>
+  <exec_depend>libqt5-widgets</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

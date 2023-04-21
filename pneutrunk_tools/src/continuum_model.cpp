@@ -13,7 +13,7 @@ ContinuumModel::ContinuumModel(/* args */)
     _cable_markers_ptr = new visualization_msgs::msg::MarkerArray[1];
     this->InitCableMarkers();
 
-    _joint_state.segment_state.resize(_NUMBER_OF_SEGMENTS);
+    // _joint_state.segment_state.resize(_NUMBER_OF_SEGMENTS);
 
     // Initialize the transform broadcaster
     _tf_broadcaster = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
