@@ -13,7 +13,8 @@
 #include <QGroupBox>
 #include <QFormLayout>
 #include <QTabWidget>
-
+#include <QSlider>
+#include <QFile>
 
 
 
@@ -40,14 +41,33 @@ class PneutrunkPlugin : public rviz_common::Panel
         // void save(rviz_common::Config config) const override;
         // void load(const rviz_common::Config &conf) override;
     private:
-        /* data */
+        void InitManualTab();
+        void InitAutomatTab();
 
     protected:
+        QFile file;
+        QString styleSheetSliders;
+
         QGridLayout *grid;
         QGroupBox *box;
         QFormLayout *layoutWidget;
         QTabWidget *tabWidget;
         QVBoxLayout *mainLayout = new QVBoxLayout;
+
+        QWidget *manual_tab_widget;
+        QWidget *automat_tab_widget;
+
+        // manual tab
+        QGridLayout *manual_tab_layout;
+        std::vector<QLabel *> segments_labels;
+        std::vector<std::pair<QSlider *, QSlider *>> segments_joints_cmd_sliders;
+
+        // automat tab
+        QGridLayout *automat_tab_layout;
+
+
+
+
 
     public Q_SLOTS:
 

@@ -1,0 +1,7 @@
+QSlider::groove:horizontal {
+    min-height: 24px;
+}
+QSlider::handle:horizontal {
+    width: 24px;
+    min-height: 20px;
+}

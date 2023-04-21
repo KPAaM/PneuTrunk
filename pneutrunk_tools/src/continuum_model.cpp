@@ -94,15 +94,25 @@ void ContinuumModel::Update()
 
     // Publish cables 
     // TODO: compute position
-    for (uint i=0; i<_RESOLUTION; ++i)
-    {
-        _cable_markers_ptr[0].markers[i].pose.position.x = 0.0;
-        _cable_markers_ptr[0].markers[i].pose.position.y = 0.0;
-        _cable_markers_ptr[0].markers[i].pose.position.z = 0.5;
-        _cable_markers_ptr[0].markers[i].pose.orientation.x = 0.0;
-        _cable_markers_ptr[0].markers[i].pose.orientation.y = 0.0;
-        _cable_markers_ptr[0].markers[i].pose.orientation.z = 0.0;
-        _cable_markers_ptr[0].markers[i].pose.orientation.w = 1.0;
-    }
-    _cable_publisher->publish(*_cable_markers_ptr);
+    // Eigen::Vector3d eePc;
+    // const double segPhi = 0.0;
+    // const double segKappa = 0.0001;
+    // const double segmentLength = 1.274;
+    // for (uint i=0; i<_RESOLUTION; ++i)
+    // {
+    //     eePc(0) = cos(segPhi)*(cos(segKappa*((i/((double)_RESOLUTION-1))*segmentLength)) - 1)/segKappa;
+	// 	eePc(1) = sin(segPhi)*(cos(segKappa*((i/((double)_RESOLUTION-1))*segmentLength)) - 1)/segKappa;
+	// 	eePc(2) = (sin(segKappa*((i/((double)_RESOLUTION-1))*segmentLength))/segKappa);
+
+    //     eePc = robot.Seg_T[0].topLeftCorner<3,3>()*eePc;
+
+    //     _cable_markers_ptr[0].markers[i].pose.position.x = robot.Seg_T[0](0,3)/1000.0 + eePc(0);
+    //     _cable_markers_ptr[0].markers[i].pose.position.y = robot.Seg_T[0](1,3)/1000.0 + eePc(1);
+    //     _cable_markers_ptr[0].markers[i].pose.position.z = robot.Seg_T[0](2,3)/1000.0 + eePc(2);
+    //     _cable_markers_ptr[0].markers[i].pose.orientation.x = 0.0;
+    //     _cable_markers_ptr[0].markers[i].pose.orientation.y = 0.0;
+    //     _cable_markers_ptr[0].markers[i].pose.orientation.z = 0.0;
+    //     _cable_markers_ptr[0].markers[i].pose.orientation.w = 1.0;
+    // }
+    // _cable_publisher->publish(*_cable_markers_ptr);
 }
