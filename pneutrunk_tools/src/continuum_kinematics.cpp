@@ -58,7 +58,7 @@ Configuration::ForwardKinematics(const Eigen::VectorXd &q)  //todo change q to [
     T[5] = SegmentTransform(q(10),q(11));
     T[6] << 1, 0, 0, 0,
             0, 1, 0, 0,
-            0, 0, 1, 3*_r+q(12),
+            0, 0, 1, 2*_r+q(12),
             0, 0, 0, 1;
     
 

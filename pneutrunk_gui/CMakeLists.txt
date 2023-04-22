@@ -22,6 +22,8 @@ find_package(rviz_rendering REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(pneutrunk_msgs REQUIRED)
+find_package(Eigen3 REQUIRED)
+
 
 
 find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets)
@@ -43,10 +45,11 @@ include_directories(${PROJECT_SOURCE_DIR}/Forms/)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 SET(SOURCES ${PROJECT_SOURCE_DIR}/Sources/main.cpp
-        ${PROJECT_SOURCE_DIR}/Sources/mainwindow.cpp)
-SET(HEADERS ${PROJECT_SOURCE_DIR}/Headers/mainwindow.h)
+        ${PROJECT_SOURCE_DIR}/Sources/mainwindow.cpp
+        ${PROJECT_SOURCE_DIR}/Sources/ros_module.cpp)
+SET(HEADERS ${PROJECT_SOURCE_DIR}/Headers/mainwindow.h ${PROJECT_SOURCE_DIR}/Headers/ros_module.h)
 SET(FORMS ${PROJECT_SOURCE_DIR}/Forms/mainwindow.ui)
-set(RESOURCE_FILES ${PROJECT_SOURCE_DIR}/Icons/files.qrc)
+SET(RESOURCE_FILES ${PROJECT_SOURCE_DIR}/Icons/files.qrc)
 
 QT5_WRAP_CPP(HEADERS_MOC ${HEADERS})
 QT5_WRAP_UI(FORMS_HEADERS ${FORMS})
@@ -84,7 +87,8 @@ ament_export_dependencies(
   rviz_common
   rviz_default_plugins
   rviz_rendering
-  pneutrunk_msgs)
+  pneutrunk_msgs
+  )
 
 install(TARGETS
   ${PROJECT_NAME}
