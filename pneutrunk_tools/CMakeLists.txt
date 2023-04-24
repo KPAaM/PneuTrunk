@@ -28,8 +28,8 @@ find_package(geometry_msgs REQUIRED)
 
 include_directories(include)
 
-add_executable(testovaci src/main.cpp src/continuum_model.cpp src/continuum_kinematics.cpp)
-ament_target_dependencies(testovaci 
+add_executable(pneutrunk_model src/main.cpp src/continuum_model.cpp src/continuum_kinematics.cpp)
+ament_target_dependencies(pneutrunk_model
   rclcpp 
   std_msgs 
   visualization_msgs 
@@ -42,7 +42,7 @@ ament_target_dependencies(testovaci
 # rosidl_target_interfaces(testovaci ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 install(TARGETS
-  testovaci
+  pneutrunk_model
   DESTINATION lib/${PROJECT_NAME}
 )
 

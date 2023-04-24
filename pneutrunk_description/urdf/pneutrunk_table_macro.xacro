@@ -3,19 +3,6 @@
 
 <xacro:macro name="pneutrunk_table">
     <link name="base_link">
-        <inertial>
-            <origin
-                xyz="-0.434770940222074 -0.792173144511564 1.62663324904387"
-                rpy="0 0 0" />
-            <mass value="3" />
-        <inertia
-            ixx="1.32651553814696"
-            ixy="0.000517555260969639"
-            ixz="0.0219200370677011"
-            iyy="1.01290522605608"
-            iyz="-0.0177124498363617"
-            izz="0.550947775469309" />
-        </inertial>
     <visual>
         <origin
             xyz="0 0 0"
@@ -27,14 +14,6 @@
             <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
       </material>
     </visual>
-    <collision>
-        <origin
-            xyz="0 0 0"
-            rpy="0 0 0" />
-        <geometry>
-            <mesh filename="package://pneutrunk_description/meshes/base_link.STL" />
-        </geometry>
-    </collision>
     </link>
 
     <link name="tool_link"/>

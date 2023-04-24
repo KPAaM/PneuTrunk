@@ -2,7 +2,7 @@
 
 
 ContinuumModel::ContinuumModel(/* args */)
-    : Node("continuum_model")
+    : Node("pneutrunk_model")
 {
     _timer = this->create_wall_timer(LOOP_TIME, std::bind(&ContinuumModel::Update, this));
     _cable_publisher = this->create_publisher<visualization_msgs::msg::MarkerArray>("continuum_robot/cables", 1);

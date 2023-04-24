@@ -1,7 +1,6 @@
 import pyrealsense2 as rs
 import numpy as np
 import cv2
-import argparse
 from ultralytics import YOLO
 import supervision as sv
 
@@ -66,29 +65,13 @@ class RealsenseCamera:
         self.pipeline.stop()
 
 
-def parse_arguments() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="YOLOv8 live")
-    parser.add_argument(
-        "--webcam-resolution",
-        default=[1280, 720],
-        nargs=2,
-        type=int
-    )
-    args = parser.parse_args()
-    return args
-
-
-def main():
-    args = parse_arguments()
-
-    rclpy.init()
+def main(args=None):
+    rclpy.init(args=args)    
     node = Node('pneutrunk_object_detection')
     publisher = node.create_publisher(Image, 'pneutrunk_object_detection/camera', 1)
     bridge = CvBridge()
 
-
-
-    frame_width, frame_height = args.webcam_resolution
+    frame_width, frame_height = [1280, 720]
 
     model = YOLO("yolov8s.pt")
 
@@ -114,7 +97,7 @@ def main():
             depth_frame = np.array(depth_frame)
 
             # Run object detection on color image using YOLOv8 model
-            result = model(frame, agnostic_nms=True)[0]
+            result = model(frame, verbose=False,agnostic_nms=True)[0]
             detections = sv.Detections.from_yolov8(result)
 
             # Print the position of the detected objects in
