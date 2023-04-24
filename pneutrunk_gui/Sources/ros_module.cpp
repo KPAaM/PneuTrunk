@@ -8,12 +8,12 @@ rosModule::rosModule(QObject *parent)
 void rosModule::run()
 {
     _node = std::make_shared<rclcpp::Node>("pneutrunk_gui_subscriber");
-    _state_subscriber = _node->create_subscription<pneutrunk_msgs::msg::PneutrunkJointState>("/continuum_robot/state", 
+    _state_subscriber = _node->create_subscription<pneutrunk_msgs::msg::PneutrunkJointState>("/pneutrunk/joints/state", 
                         1, std::bind(&rosModule::JointStateCallback, this, _1));
 
-    _camera_gesture_subscriber = _node->create_subscription<sensor_msgs::msg::Image>("/pneutrunk_gesture/camera", 
+    _camera_gesture_subscriber = _node->create_subscription<sensor_msgs::msg::Image>("/pneutrunk/gesture/camera", 
                         1, std::bind(&rosModule::CameraGestureCallback, this, _1));
-    _camera_object_detection_subscriber = _node->create_subscription<sensor_msgs::msg::Image>("pneutrunk_object_detection/camera", 
+    _camera_object_detection_subscriber = _node->create_subscription<sensor_msgs::msg::Image>("/pneutrunk/object_detection/camera", 
                         1, std::bind(&rosModule::ObjectDetectionCallback, this, _1));
 
     _executor.add_node(_node);

@@ -471,7 +471,7 @@ QPushButton:pressed {
           <item>
            <widget class="QStackedWidget" name="Pages_Widget">
             <property name="currentIndex">
-             <number>3</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="Page_Main">
              <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -510,7 +510,7 @@ QPushButton:pressed {
                     <string notr="true">color: rgb(238, 238, 236);</string>
                    </property>
                    <property name="text">
-                    <string>Battery Testers</string>
+                    <string>Pneutrunk Control Interface</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -528,9 +528,9 @@ QPushButton:pressed {
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <layout class="QVBoxLayout" name="verticalLayout_16">
                  <item>
-                  <widget class="QFrame" name="frame_2">
+                  <widget class="QFrame" name="frame_11">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -543,7 +543,7 @@ QPushButton:pressed {
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_23">
+                   <layout class="QHBoxLayout" name="horizontalLayout_3">
                     <property name="spacing">
                      <number>0</number>
                     </property>
@@ -560,16 +560,16 @@ QPushButton:pressed {
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QPushButton" name="Button_Tester_1">
+                     <widget class="QPushButton" name="Button_Manual_Joint">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
-                        <height>350</height>
+                        <height>250</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>200</width>
+                        <width>600</width>
                         <height>16777215</height>
                        </size>
                       </property>
@@ -579,13 +579,90 @@ QPushButton:pressed {
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QPushButton{
+                       <string notr="true">QPushButton {	
 	color: rgb(255, 255, 255);
-	background-color: rgb(100, 0, 0);
+}
+QPushButton:hover {
+	background-color: rgb(33, 37, 43);
+	border-left: 28px solid rgb(33, 37, 43);
+}
+QPushButton:pressed {	
+	background-color: rgb(85, 170, 255);
+	border-left: 28px solid rgb(85, 170, 255);
 }</string>
                       </property>
                       <property name="text">
-                       <string>Tester 1</string>
+                       <string>Manual Joint Control</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_2">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_14">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>15</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>15</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QPushButton" name="Button_Manual_EEF">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>250</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>600</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton {	
+	color: rgb(255, 255, 255);
+}
+QPushButton:hover {
+	background-color: rgb(33, 37, 43);
+	border-left: 28px solid rgb(33, 37, 43);
+}
+QPushButton:pressed {	
+	background-color: rgb(85, 170, 255);
+	border-left: 28px solid rgb(85, 170, 255);
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Manual EEF Control</string>
                       </property>
                      </widget>
                     </item>
@@ -606,7 +683,7 @@ QPushButton:pressed {
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_26">
+                   <layout class="QHBoxLayout" name="horizontalLayout_35">
                     <property name="spacing">
                      <number>0</number>
                     </property>
@@ -623,16 +700,16 @@ QPushButton:pressed {
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QPushButton" name="Button_Tester_2">
+                     <widget class="QPushButton" name="Button_Cameras">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
-                        <height>350</height>
+                        <height>250</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>200</width>
+                        <width>600</width>
                         <height>16777215</height>
                        </size>
                       </property>
@@ -642,142 +719,23 @@ QPushButton:pressed {
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QPushButton{
+                       <string notr="true">QPushButton {	
 	color: rgb(255, 255, 255);
-	background-color: rgb(0, 100, 0);
+}
+QPushButton:hover {
+	background-color: rgb(33, 37, 43);
+	border-left: 28px solid rgb(33, 37, 43);
+}
+QPushButton:pressed {	
+	background-color: rgb(85, 170, 255);
+	border-left: 28px solid rgb(85, 170, 255);
 }</string>
                       </property>
                       <property name="text">
-                       <string>Tester 2</string>
+                       <string>Cameras View</string>
                       </property>
                      </widget>
                     </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_11">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::NoFrame</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_15">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>15</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>15</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <widget class="QPushButton" name="Button_Tester_3">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>350</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>200</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <pointsize>16</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">color: rgb(255, 255, 255);</string>
-                      </property>
-                      <property name="text">
-                       <string>Tester 3</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_12">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::NoFrame</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_16">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>15</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>15</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_13">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::NoFrame</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_20">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>15</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>15</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
                    </layout>
                   </widget>
                  </item>
@@ -1175,7 +1133,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setRoll">
+                              <widget class="QSlider" name="Slider_seg1_setRoll">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -1272,7 +1230,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setPitch">
+                              <widget class="QSlider" name="Slider_seg1_setPitch">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -1444,7 +1402,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setRoll_2">
+                              <widget class="QSlider" name="Slider_seg2_setRoll">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -1541,7 +1499,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setPitch_2">
+                              <widget class="QSlider" name="Slider_seg2_setPitch">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -1713,7 +1671,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setRoll_3">
+                              <widget class="QSlider" name="Slider_seg3_setRoll">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -1810,7 +1768,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setPitch_3">
+                              <widget class="QSlider" name="Slider_seg3_setPitch">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -1982,7 +1940,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setRoll_4">
+                              <widget class="QSlider" name="Slider_seg4_setRoll">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -2079,7 +2037,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setPitch_4">
+                              <widget class="QSlider" name="Slider_seg4_setPitch">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -2251,7 +2209,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setRoll_5">
+                              <widget class="QSlider" name="Slider_seg5_setRoll">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -2348,7 +2306,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setPitch_5">
+                              <widget class="QSlider" name="Slider_seg5_setPitch">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -2520,7 +2478,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setRoll_6">
+                              <widget class="QSlider" name="Slider_seg6_setRoll">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -2617,7 +2575,7 @@ border-radius: 5px;
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setPitch_6">
+                              <widget class="QSlider" name="Slider_seg6_setPitch">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>
@@ -2839,7 +2797,7 @@ QPushButton:pressed {
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSlider" name="slider_seg1_setRoll_7">
+                              <widget class="QSlider" name="Slider_seg7_setRoll">
                                <property name="maximumSize">
                                 <size>
                                  <width>16777215</width>

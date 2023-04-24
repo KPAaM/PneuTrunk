@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
   
     _node = std::make_shared<rclcpp::Node>("pneutrunk_gui");
-    _publisher = _node->create_publisher<std_msgs::msg::String>("/gui_control", 10);
+    _joint_cmd_publisher = _node->create_publisher<pneutrunk_msgs::msg::PneutrunkJointState>("/pneutrunk/joints/cmd", 1);
 
     _T.resize(7);
     _Seg_T.resize(7);
@@ -20,7 +20,34 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->Button_Page_3, &QPushButton::clicked, this, [this] { ui->Pages_Widget->setCurrentWidget(ui->Page_Manual_EEF); });
     connect(ui->Button_Page_4, &QPushButton::clicked, this, [this] { ui->Pages_Widget->setCurrentWidget(ui->Page_Cameras); });
 
+    // Main page buttons
+    connect(ui->Button_Manual_Joint, &QPushButton::clicked, this, [this] { ui->Pages_Widget->setCurrentWidget(ui->Page_Manual_Joints); });
+    connect(ui->Button_Manual_EEF, &QPushButton::clicked, this, [this] { ui->Pages_Widget->setCurrentWidget(ui->Page_Manual_EEF); });
+    connect(ui->Button_Cameras, &QPushButton::clicked, this, [this] { ui->Pages_Widget->setCurrentWidget(ui->Page_Cameras); });
+
     // connect(ui->rvizbutton,  &QPushButton::clicked, this, &MainWindow::on_Button);
+    // Sliders buttons
+    connect(ui->Slider_seg1_setRoll, SIGNAL(sliderReleased()), this, SLOT(on_Slider_seg1_setRoll_Released()));
+    connect(ui->Slider_seg1_setPitch, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg1_setPitch_Released);
+
+    connect(ui->Slider_seg2_setRoll, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg2_setRoll_Released);
+    connect(ui->Slider_seg2_setPitch, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg2_setPitch_Released);
+
+    connect(ui->Slider_seg3_setRoll, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg3_setRoll_Released);
+    connect(ui->Slider_seg3_setPitch, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg3_setPitch_Released);
+
+    connect(ui->Slider_seg4_setRoll, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg4_setRoll_Released);
+    connect(ui->Slider_seg4_setPitch, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg4_setPitch_Released);
+
+    connect(ui->Slider_seg5_setRoll, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg5_setRoll_Released);
+    connect(ui->Slider_seg5_setPitch, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg5_setPitch_Released);
+
+    connect(ui->Slider_seg6_setRoll, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg6_setRoll_Released);
+    connect(ui->Slider_seg6_setPitch, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg6_setPitch_Released);
+
+    connect(ui->Slider_seg7_setRoll, &QSlider::sliderReleased, this, &MainWindow::on_Slider_seg7_setRoll_Released);
+
+
     ROS_thread = new rosModule(this);
     connect(ROS_thread, SIGNAL(rosUpdate()), this, SLOT(JointStateCallback()));
     connect(ROS_thread, SIGNAL(rosGestureUpdate()), this, SLOT(GestureCameraCallback()));
@@ -38,9 +65,7 @@ MainWindow::~MainWindow()
 void 
 MainWindow::on_Button()
 {
-    std_msgs::msg::String msg;
-    msg.data = "asda";
-    _publisher->publish(msg);
+   
 }
 
 // const pneutrunk_msgs::msg::PneutrunkJointState &msg
@@ -183,4 +208,69 @@ QImage Mat2QImage(cv::Mat const& src)
      dest.bits(); // enforce deep copy, see documentation 
      // of QImage::QImage ( const uchar * data, int width, int height, Format format )
      return dest;
+}
+
+void MainWindow::on_Slider_seg1_setRoll_Released()
+{
+    std::cout << "roll1\n";
+}
+
+void MainWindow::on_Slider_seg1_setPitch_Released()
+{
+    std::cout << "pitch1\n";
+}
+
+void MainWindow::on_Slider_seg2_setRoll_Released()
+{
+    std::cout << "roll2\n";
+}
+
+void MainWindow::on_Slider_seg2_setPitch_Released()
+{
+    std::cout << "pitch2\n";
+}
+
+void MainWindow::on_Slider_seg3_setRoll_Released()
+{
+    std::cout << "roll3\n";
+}
+
+void MainWindow::on_Slider_seg3_setPitch_Released()
+{
+    std::cout << "pitch3\n";
+}
+
+void MainWindow::on_Slider_seg4_setRoll_Released()
+{
+    std::cout << "roll4\n";
+}
+
+void MainWindow::on_Slider_seg4_setPitch_Released()
+{
+    std::cout << "pitch4\n";
+}
+
+void MainWindow::on_Slider_seg5_setRoll_Released()
+{
+    std::cout << "roll5\n";
+}
+
+void MainWindow::on_Slider_seg5_setPitch_Released()
+{
+    std::cout << "pitch5\n";
+}
+
+void MainWindow::on_Slider_seg6_setRoll_Released()
+{
+    std::cout << "roll6\n";
+}
+
+void MainWindow::on_Slider_seg6_setPitch_Released()
+{
+    std::cout << "pitch6\n";
+}
+
+void MainWindow::on_Slider_seg7_setRoll_Released()
+{
+    std::cout << "roll7\n";
 }

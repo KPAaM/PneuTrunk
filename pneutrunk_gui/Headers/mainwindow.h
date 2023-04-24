@@ -40,7 +40,7 @@ class MainWindow : public QMainWindow
         // ROS utils
         rosModule *ROS_thread;
         rclcpp::Node::SharedPtr _node;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr _publisher;
+        rclcpp::Publisher<pneutrunk_msgs::msg::PneutrunkJointState>::SharedPtr _joint_cmd_publisher;
  
         // Forward kinematics
         const uint _NUM_DOF = 7;
@@ -54,6 +54,31 @@ class MainWindow : public QMainWindow
         // void on_Button_Page_1_clicked();
         // void on_Button_Page_2_clicked();
         void on_Button();
+
+        //slider_seg1_setRoll
+        //slider_seg1_setPitch
+        // CMD Slider for joints
+        void on_Slider_seg1_setRoll_Released();
+        void on_Slider_seg1_setPitch_Released();
+
+        void on_Slider_seg2_setRoll_Released();
+        void on_Slider_seg2_setPitch_Released();
+
+        void on_Slider_seg3_setRoll_Released();
+        void on_Slider_seg3_setPitch_Released();
+
+        void on_Slider_seg4_setRoll_Released();
+        void on_Slider_seg4_setPitch_Released();
+
+        void on_Slider_seg5_setRoll_Released();
+        void on_Slider_seg5_setPitch_Released();
+
+        void on_Slider_seg6_setRoll_Released();
+        void on_Slider_seg6_setPitch_Released();
+
+        void on_Slider_seg7_setRoll_Released();
+        
+
 
     public slots:
         void JointStateCallback();

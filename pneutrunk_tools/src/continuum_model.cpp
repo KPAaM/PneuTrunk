@@ -5,8 +5,8 @@ ContinuumModel::ContinuumModel(/* args */)
     : Node("pneutrunk_model")
 {
     _timer = this->create_wall_timer(LOOP_TIME, std::bind(&ContinuumModel::Update, this));
-    _cable_publisher = this->create_publisher<visualization_msgs::msg::MarkerArray>("continuum_robot/cables", 1);
-    _state_subscriber = this->create_subscription<pneutrunk_msgs::msg::PneutrunkJointState>("continuum_robot/state", 
+    _cable_publisher = this->create_publisher<visualization_msgs::msg::MarkerArray>("/pneutrunk/cables/state", 1);
+    _state_subscriber = this->create_subscription<pneutrunk_msgs::msg::PneutrunkJointState>("/pneutrunk/joints/state", 
                         1, std::bind(&ContinuumModel::StateCallback, this, _1));
 
 
@@ -54,13 +54,13 @@ void ContinuumModel::Update()
 {
     // Prepare data
     Eigen::VectorXd q(13);
-    q << -15.0, 2.0,
-         -15.0, 2.0,
-         -15.0, 2.0,
-         -15.0, 2.0,
-         -15.0, 2.0,
-         -15.0, 2.0,
-         0.0;
+    q << _joint_state.segment_state[0], _joint_state.segment_state[1],
+         _joint_state.segment_state[2], _joint_state.segment_state[3],
+         _joint_state.segment_state[4], _joint_state.segment_state[5],
+         _joint_state.segment_state[6], _joint_state.segment_state[7],
+         _joint_state.segment_state[8], _joint_state.segment_state[9],
+         _joint_state.segment_state[10], _joint_state.segment_state[11],
+         _joint_state.translation;
     robot.ForwardKinematics(q);
 
     // Update rotation disk 1-6

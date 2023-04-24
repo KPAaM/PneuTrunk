@@ -16,7 +16,7 @@ mp_hands = mp.solutions.hands
 def main(args=None):
     rclpy.init(args=args)
     node = Node('pneutrunk_gesture_control')
-    publisher = node.create_publisher(Image, 'pneutrunk_gesture/camera', 1)
+    publisher = node.create_publisher(Image, '/pneutrunk/gesture/camera', 1)
     
     cap = cv2.VideoCapture(0)
     bridge = CvBridge()

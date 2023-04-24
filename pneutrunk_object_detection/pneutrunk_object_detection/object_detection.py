@@ -68,7 +68,7 @@ class RealsenseCamera:
 def main(args=None):
     rclpy.init(args=args)    
     node = Node('pneutrunk_object_detection')
-    publisher = node.create_publisher(Image, 'pneutrunk_object_detection/camera', 1)
+    publisher = node.create_publisher(Image, '/pneutrunk/object_detection/camera', 1)
     bridge = CvBridge()
 
     frame_width, frame_height = [1280, 720]
