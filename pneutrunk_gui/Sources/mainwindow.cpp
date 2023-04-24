@@ -18,10 +18,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->Button_Page_1, &QPushButton::clicked, this, [this] { ui->Pages_Widget->setCurrentWidget(ui->Page_Main); });
     connect(ui->Button_Page_2, &QPushButton::clicked, this, [this] { ui->Pages_Widget->setCurrentWidget(ui->Page_Manual_Joints); });
     connect(ui->Button_Page_3, &QPushButton::clicked, this, [this] { ui->Pages_Widget->setCurrentWidget(ui->Page_Manual_EEF); });
+    connect(ui->Button_Page_4, &QPushButton::clicked, this, [this] { ui->Pages_Widget->setCurrentWidget(ui->Page_Cameras); });
 
     // connect(ui->rvizbutton,  &QPushButton::clicked, this, &MainWindow::on_Button);
     ROS_thread = new rosModule(this);
     connect(ROS_thread, SIGNAL(rosUpdate()), this, SLOT(JointStateCallback()));
+    connect(ROS_thread, SIGNAL(rosGestureUpdate()), this, SLOT(GestureCameraCallback()));
+    connect(ROS_thread, SIGNAL(rosObjectDetectionUpdate()), this, SLOT(ObjectDetectionCameraCallback()));
     ROS_thread->start(); // This invokes WorkerThread::run in a new thread
 }
 
@@ -151,3 +154,33 @@ MainWindow::ForwardKinematics(const Eigen::VectorXd &q)
 }    
 
 
+
+void MainWindow::GestureCameraCallback()
+{
+    if (ui->Pages_Widget->currentIndex() == 3)
+    {
+        QImage qimage = Mat2QImage(ROS_thread->camera_gesture_matrix);
+        ui->Label_Camera_gesture->setPixmap(QPixmap::fromImage(qimage));
+    }
+    
+}
+
+void MainWindow::ObjectDetectionCameraCallback()
+{
+    if (ui->Pages_Widget->currentIndex() == 3)
+    {
+        QImage qimage = Mat2QImage(ROS_thread->camera_object_detection_matrix);
+        ui->Label_Camera_object->setPixmap(QPixmap::fromImage(qimage));
+    }
+}
+
+
+QImage Mat2QImage(cv::Mat const& src)
+{
+     cv::Mat temp; // make the same cv::Mat
+     cvtColor(src, temp,CV_BGR2RGB); // cvtColor Makes a copt, that what i need
+     QImage dest((const uchar *) temp.data, temp.cols, temp.rows, temp.step, QImage::Format_RGB888);
+     dest.bits(); // enforce deep copy, see documentation 
+     // of QImage::QImage ( const uchar * data, int width, int height, Format format )
+     return dest;
+}

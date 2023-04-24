@@ -1,9 +1,6 @@
 from setuptools import setup
-from setuptools import find_packages
-import os
 
-package_name = 'pneutrunk_gesture_control'
-#    packages=find_packages(exclude=['test']),
+package_name = 'pneutrunk_object_detection'
 
 setup(
     name=package_name,
@@ -23,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'pneutrunk_gesture_control = pneutrunk_gesture_control.gesture_control:main'
+            'pneutrunk_object_detection = pneutrunk_object_detection.object_detection:main'
         ],
     },
 )

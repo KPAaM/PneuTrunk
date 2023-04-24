@@ -10,6 +10,12 @@ void rosModule::run()
     _node = std::make_shared<rclcpp::Node>("pneutrunk_gui_subscriber");
     _state_subscriber = _node->create_subscription<pneutrunk_msgs::msg::PneutrunkJointState>("/continuum_robot/state", 
                         1, std::bind(&rosModule::JointStateCallback, this, _1));
+
+    _camera_gesture_subscriber = _node->create_subscription<sensor_msgs::msg::Image>("/pneutrunk_gesture/camera", 
+                        1, std::bind(&rosModule::CameraGestureCallback, this, _1));
+    _camera_object_detection_subscriber = _node->create_subscription<sensor_msgs::msg::Image>("pneutrunk_object_detection/camera", 
+                        1, std::bind(&rosModule::ObjectDetectionCallback, this, _1));
+
     _executor.add_node(_node);
     _executor.spin();
 }
@@ -26,4 +32,16 @@ void rosModule::JointStateCallback(const pneutrunk_msgs::msg::PneutrunkJointStat
     joints_actual[NUM_DOF-1].first = msg.translation;
 
     emit rosUpdate();
+}
+
+void rosModule::CameraGestureCallback(const sensor_msgs::msg::Image &msg)
+{
+    camera_gesture_matrix = cv_bridge::toCvCopy(msg, "bgr8")->image;
+    emit rosGestureUpdate();
+}
+
+void rosModule::ObjectDetectionCallback(const sensor_msgs::msg::Image &msg)
+{
+    camera_object_detection_matrix = cv_bridge::toCvCopy(msg, "bgr8")->image;
+    emit rosObjectDetectionUpdate();
 }

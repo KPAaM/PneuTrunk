@@ -20,7 +20,7 @@ class Configuration
         std::vector<Eigen::Matrix4d> T;
         std::vector<Eigen::Matrix4d> Seg_T;
     private:
-        double _r = 62.0;
+        double _r = -62.0;
 
 };
 

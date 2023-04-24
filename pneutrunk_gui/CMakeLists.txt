@@ -23,7 +23,9 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(pneutrunk_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
-
+find_package(sensor_msgs REQUIRED)
+find_package(cv_bridge)
+find_package(OpenCV REQUIRED)
 
 
 find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets)
@@ -35,7 +37,7 @@ find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets)
 set(QT_LIBRARIES Qt5::Widgets)
 
 
-include_directories(include)
+include_directories(include  ${OpenCV_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR}/Sources/)
 include_directories(${PROJECT_SOURCE_DIR}/Headers/)
 include_directories(${PROJECT_SOURCE_DIR}/Forms/)
@@ -78,9 +80,11 @@ ament_target_dependencies(${PROJECT_NAME}
   "rviz_default_plugins"
   "rviz_rendering"
   pneutrunk_msgs
+  sensor_msgs
+  cv_bridge
 )
 
-target_link_libraries(${PROJECT_NAME} ${QT_LIBRARIES} )
+target_link_libraries(${PROJECT_NAME} ${QT_LIBRARIES}   ${OpenCV_LIBS})
 
 ament_export_dependencies(
   rclcpp
@@ -88,6 +92,8 @@ ament_export_dependencies(
   rviz_default_plugins
   rviz_rendering
   pneutrunk_msgs
+  sensor_msgs
+  cv_bridge
   )
 
 install(TARGETS

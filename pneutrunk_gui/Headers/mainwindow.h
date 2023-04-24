@@ -13,7 +13,8 @@
 #include <std_msgs/msg/string.hpp>
 #include <pneutrunk_msgs/msg/pneutrunk_joint_state.hpp>
 #include "ros_module.h"
-
+#include <QImage>
+#include <QPixmap>
 
 using namespace std::chrono_literals;
 using std::placeholders::_1;
@@ -56,6 +57,11 @@ class MainWindow : public QMainWindow
 
     public slots:
         void JointStateCallback();
+        void GestureCameraCallback();
+        void ObjectDetectionCameraCallback();
 };
+
+QImage Mat2QImage(cv::Mat const& src);
+
 
 #endif // MAINWINDOW_H

@@ -54,13 +54,13 @@ void ContinuumModel::Update()
 {
     // Prepare data
     Eigen::VectorXd q(13);
-    q << 15.0, 2.0,
-        15.0, 2.0,
-        15.0, 2.0,
-        15.0, 2.0,
-        15.0, 2.0,
-        15.0, 2.0,
-        0.0;
+    q << -15.0, 2.0,
+         -15.0, 2.0,
+         -15.0, 2.0,
+         -15.0, 2.0,
+         -15.0, 2.0,
+         -15.0, 2.0,
+         0.0;
     robot.ForwardKinematics(q);
 
     // Update rotation disk 1-6
