@@ -5,6 +5,9 @@ import cv2
 from cv_bridge import CvBridge, CvBridgeError
 from sensor_msgs.msg import Image
 import time
+from std_msgs.msg import String
+import numpy as np
+import math
 
 import mediapipe as mp
 mp_drawing = mp.solutions.drawing_utils
@@ -16,8 +19,9 @@ mp_hands = mp.solutions.hands
 def main(args=None):
     rclpy.init(args=args)
     node = Node('pneutrunk_gesture_control')
-    publisher = node.create_publisher(Image, '/pneutrunk/gesture/camera', 1)
-    
+    publisher_camera = node.create_publisher(Image, '/pneutrunk/gesture/camera', 1)
+    publisher_gesture_cmd = node.create_publisher(String, '/pneutrunk/gesture/cmd', 1)
+
     cap = cv2.VideoCapture(0)
     bridge = CvBridge()
 
@@ -54,10 +58,18 @@ def main(args=None):
                         mp_hands.HAND_CONNECTIONS,
                         mp_drawing_styles.get_default_hand_landmarks_style(),
                         mp_drawing_styles.get_default_hand_connections_style())
+                    
+                    msg_gesture_cmd = String()
+                    l2_norm = math.sqrt((hand_landmarks.landmark[4].x-hand_landmarks.landmark[8].x)**2+(hand_landmarks.landmark[4].y-hand_landmarks.landmark[8].y)**2)
+                    if l2_norm < 0.05:
+                        msg_gesture_cmd.data = "OK"
+                        publisher_gesture_cmd.publish(msg_gesture_cmd)
+
             image = cv2.flip(image, 1)
 
             msg = bridge.cv2_to_imgmsg(image, "bgr8")
-            publisher.publish(msg)
+            publisher_camera.publish(msg)
+
             
 
     cap.release()

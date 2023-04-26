@@ -70,8 +70,8 @@ def generate_launch_description():
         rviz_node,
         robot_state_publisher_node,
         continuum_model_node,
-        gui_node
-        # camera_gesture_node,
-        # camera_object_detect_node,
+        gui_node,
+        camera_gesture_node
+        # camera_object_detect_node
     ])
 
