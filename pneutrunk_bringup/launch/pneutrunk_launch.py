@@ -10,13 +10,11 @@ def generate_launch_description():
     """
     RViz + robot model and urdf
     """
-    pneutrunk_xacro_file = os.path.join(get_package_share_directory('pneutrunk_description'), 'urdf',
-                                     'pneutrunk.xacro')
-    robot_description = Command(
-        [FindExecutable(name='xacro'), ' ', pneutrunk_xacro_file])
+  
+    pneutrunk_xacro_file = os.path.join(get_package_share_directory('pneutrunk_description'), 'urdf', 'pneutrunk.xacro')
+    robot_description = Command([FindExecutable(name='xacro'), ' ', pneutrunk_xacro_file])
     
-    rviz_file = os.path.join(get_package_share_directory('pneutrunk_description'), 'config',
-                             'visualize.rviz')
+    rviz_file = os.path.join(get_package_share_directory('pneutrunk_description'), 'config', 'visualize.rviz')
 
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
@@ -71,7 +69,7 @@ def generate_launch_description():
         robot_state_publisher_node,
         continuum_model_node,
         gui_node,
-        camera_gesture_node
-        # camera_object_detect_node
+       # camera_gesture_node,
+        camera_object_detect_node
     ])
 

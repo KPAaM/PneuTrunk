@@ -8,6 +8,7 @@ import rclpy
 from rclpy.node import Node
 from cv_bridge import CvBridge, CvBridgeError
 from sensor_msgs.msg import Image
+from geometry_msgs.msg import Pose
 
 class RealsenseCamera:
     def __init__(self):
@@ -68,6 +69,7 @@ class RealsenseCamera:
 def main(args=None):
     rclpy.init(args=args)    
     node = Node('pneutrunk_object_detection')
+    object_publisher_ = node.create_publisher(Pose, '/pneutrunk/object_detection/cmd', 1) #pridane
     publisher = node.create_publisher(Image, '/pneutrunk/object_detection/camera', 1)
     bridge = CvBridge()
 
@@ -121,12 +123,13 @@ def main(args=None):
 
                 # Calculate the average depth value within the area of the detected object
                 distance = depth_frame[int(center_y), int(center_x)]
-                # ball_distance = np.mean(distance)
+                ball_distance = np.mean(distance)
 
                 # center_x_mm = ((center_x - ins_x) * (ball_distance*0.66) / fx)
                 # center_y_mm = ((center_y - ins_y) * (ball_distance*0.66) / fy)
                 center_x_mm = (1460/1280)*center_x
                 center_y_mm = (821/720)*center_y
+                
 
                 for detection in detections:
                     if id_obj == "32" or id_obj == "64":   
@@ -137,6 +140,11 @@ def main(args=None):
                         cv2.putText(frame, f' x={center_x_mm:.1f}[mm]', (int(x1), int(y2) + 28), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 1)
                         cv2.putText(frame, f' y={center_y_mm:.1f}[mm]', (int(x1), int(y2) + 56), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 1)
                         cv2.putText(frame, f' z={distance:.1f}[mm]', (int(x1), int(y2) + 84), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 1)
+                        msg_object = Pose()
+                        msg_object.position.x = center_x_mm
+                        msg_object.position.y = center_y_mm
+                        msg_object.position.z = ball_distance
+                        object_publisher_.publish(msg_object)
                         
             msg = bridge.cv2_to_imgmsg(frame, "bgr8")
             publisher.publish(msg)

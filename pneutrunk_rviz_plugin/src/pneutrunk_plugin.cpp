@@ -17,7 +17,7 @@ ManualTab::ManualTab(QWidget *parent)
 
 PneutrunkPlugin::PneutrunkPlugin(QWidget* parent)
     : rviz_common::Panel( parent ),
-     file("/home/tomas/ros2_ws/src/PneuTrunk/pneutrunk_rviz_plugin/stylesheet.qss")
+     file("/home/km/ros2_ws/src/PneuTrunk/pneutrunk_rviz_plugin/stylesheet.qss")
 {
     file.open(QFile::ReadOnly);
     styleSheetSliders = QLatin1String(file.readAll());
