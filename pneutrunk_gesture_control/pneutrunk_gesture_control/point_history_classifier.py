@@ -7,7 +7,7 @@ import tensorflow as tf
 class PointHistoryClassifier(object):
     def __init__(
         self,
-        model_path='/home/tomas/ros2_ws/src/PneuTrunk/pneutrunk_gesture_control/pneutrunk_gesture_control/point_history_classifier.tflite',
+        model_path='/home/km/ros2_ws/src/PneuTrunk/pneutrunk_gesture_control/pneutrunk_gesture_control/point_history_classifier.tflite',
         score_th=0.5,
         invalid_value=0,
         num_threads=1,

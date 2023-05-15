@@ -7,7 +7,7 @@ import tensorflow as tf
 class KeyPointClassifier(object):
     def __init__(
         self,
-        model_path='/home/tomas/ros2_ws/src/PneuTrunk/pneutrunk_gesture_control/pneutrunk_gesture_control/keypoint_classifier.tflite',
+        model_path='/home/km/ros2_ws/src/PneuTrunk/pneutrunk_gesture_control/pneutrunk_gesture_control/keypoint_classifier.tflite',
         num_threads=1,
     ):
         self.interpreter = tf.lite.Interpreter(model_path=model_path,
